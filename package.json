@@ -1,0 +1,22 @@
+{
+  "name": "fuzzlogia",
+  "version": "0.0.0",
+  "description": "A simple Japanese-kanji-reading-aware fuzzy search in JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "log": "./node_modules/.bin/bunyan",
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  },
+  "author": "Naoto Yokoyama",
+  "license": "MIT",
+  "devDependencies": {
+    "bluebird": "^2.9.13",
+    "debug": "^2.1.2",
+    "iconv": "^2.1.6",
+    "lodash": "^3.4.0",
+    "minimist": "^1.1.0",
+    "mocha": "^2.1.0",
+    "should": "^5.1.0",
+    "superagent": "^0.21.0"
+  }
+}
