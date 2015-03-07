@@ -27,7 +27,8 @@ var hiraToKataDict = {
   'ぁ': 'ァ', 'ぃ': 'ィ', 'ぅ': 'ゥ', 'ぇ': 'ェ', 'ぉ': 'ォ',
   'ゃ': 'ャ', 'ゅ': 'ュ', 'ょ': 'ョ',
   'ゎ': 'ヮ',
-  'っ': 'ッ'
+  'っ': 'ッ',
+  'ー': 'ー'
 };
 
 var kataToHiraDict = Object.keys(hiraToKataDict).reduce(function(acc, hira) {

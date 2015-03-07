@@ -27,6 +27,7 @@ describe('hirakata', function() {
       hirakata.toKata('ゃゅょ').should.be.exactly('ャュョ');
       hirakata.toKata('ゎ').should.be.exactly('ヮ');
       hirakata.toKata('っ').should.be.exactly('ッ');
+      hirakata.toKata('ー').should.be.exactly('ー');
     });
 
     it('should return non-hiragana character as is', function() {
@@ -55,6 +56,7 @@ describe('hirakata', function() {
       hirakata.toHira('ャュョ').should.be.exactly('ゃゅょ');
       hirakata.toHira('ヮ').should.be.exactly('ゎ');
       hirakata.toHira('ッ').should.be.exactly('っ');
+      hirakata.toHira('ー').should.be.exactly('ー');
     });
 
     it('should return non-katakana character as is', function() {
@@ -83,6 +85,7 @@ describe('hirakata', function() {
       hirakata.isKata('ャュョ').should.be.exactly(true);
       hirakata.isKata('ヮ').should.be.exactly(true);
       hirakata.isKata('ッ').should.be.exactly(true);
+      hirakata.isKata('ー').should.be.exactly(true);
     });
 
     it('should return false for non-katakana string', function() {
@@ -111,6 +114,7 @@ describe('hirakata', function() {
       hirakata.isHira('ゃゅょ').should.be.exactly(true);
       hirakata.isHira('ゎ').should.be.exactly(true);
       hirakata.isHira('っ').should.be.exactly(true);
+      hirakata.isHira('ー').should.be.exactly(true);
     });
 
     it('should return false for non-katakana string', function() {
