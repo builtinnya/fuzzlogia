@@ -69,12 +69,12 @@ var fieldDefs = {
   B:  { key: 'bushu' },
   C:  { key: 'classicalBushu'},
   G:  { key: 'grade' },
-  S:  { key: 'strokes' },
-  X:  { key: 'crossRef' },
+  S:  { key: 'strokes', many: true },
+  X:  { key: 'crossRef', many: true },
   F:  { key: 'freqRank' },
   J:  { key: 'jlptLevel' },
   N:  { key: 'classicNelson' },
-  V:  { key: 'newNelson' },
+  V:  { key: 'newNelson', many: true },
   H:  { key: 'halpernNjedcIndex' },
   DP: { key: 'halpernKkdIndex' },
   DK: { key: 'halpernKldIndex' },
@@ -82,7 +82,7 @@ var fieldDefs = {
   L:  { key: 'heisigIndex' },
   DN: { key: 'heisig6thIndex' },
   K:  { key: 'gakkenIndex' },
-  O:  { key: 'oneillJnIndex' },
+  O:  { key: 'oneillJnIndex', many: true },
   DO: { key: 'oneillEkIndex' },
   MN: { key: 'morohashiIndex' },
   MP: { key: 'morohashiVolPage' },
@@ -95,10 +95,15 @@ var fieldDefs = {
   DM: { key: 'mlkIndex' },
   P:  { key: 'skip' },
   I:  { key: 'shkdDescriptor' },
-  Q:  { key: 'fcCode' },
+  Q:  { key: 'fcCode', many: true },
   DR: { key: 'drCode' },
   Y:  { key: 'pinyinReadings', many: true },
   W:  { key: 'koreanReadings', many: true },
+  DS: { key: 'rwj1stIndex' },
+  DH: { key: 'rwj3rdIndex' },
+  DC: { key: 'crowleyIndex' },
+  Z:  { key: 'misclassificationCode', many: true },
+  DB: { key: 'jfbpIndex' },
 
   /**
    * Remaining fields
@@ -106,65 +111,61 @@ var fieldDefs = {
   args: {
     required: true,
     fn: function(args) {
+
+      var isOnReading = function isOnReading(field) {
+        return hirakata.isKata(field.replace(/[\-\.]/g, ''));
+      };
+
+      var isKunReading = function isKunReading(field) {
+        return hirakata.isHira(field.replace(/[\-\.]/g, ''));
+      };
+
+      var isNanoriMarker = function isNanoriMarker(field) {
+        return field === 'T1';
+      };
+
+      var isRadicalNameMarker = function isRadicalNameMarker(field) {
+        return field === 'T2';
+      };
+
+      var isEnglishMeaning = function isEnglishMeaning(field) {
+        return _.startsWith(field, '{');
+      };
+
       var obj = {};
+      var missedFields = [];
+
+      args = args.filter(function(field) {
+        var t = isOnReading(field) || isKunReading(field) ||
+              isEnglishMeaning(field) || isNanoriMarker(field) ||
+              isRadicalNameMarker(field);
+        if (!t) missedFields.push(field);
+        return t;
+      });
+
+      if (!_.isEmpty(missedFields)) debug('missed fields = ' + missedFields);
 
       // These are inefficient but don't care
       // We want our code to be stateless enough
 
-      obj.onReadings = _.chain(args).takeWhile(function(field) {
-        return !_.startsWith(field, 'T') &&
-          !_.startsWith(field, '{') &&
-          hirakata.isKata(field[0]);
-      }).value();
-
-      obj.kunReadings = _.chain(args).dropWhile(function(field) {
-        return !_.startsWith(field, 'T') &&
-          !_.startsWith(field, '{') &&
-          hirakata.isKata(field[0]);
-      }).takeWhile(function(field) {
-        return !_.startsWith(field, 'T') &&
-          !_.startsWith(field, '{') &&
-          hirakata.isHira(field[0]);
-      }).value();
+      obj.onReadings = _.chain(args).takeWhile(isOnReading).value();
+      obj.kunReadings = _.chain(args).dropWhile(isOnReading).takeWhile(isKunReading).value();
 
       // Doesn't work. slice(1) seems not working in this case
       //
-      //obj.nanoriReadings = _.chain(args).dropWhile(function(field) {
-      //  debug('dropping ' + field);
-      //  return field !== 'T1';
-      //}).slice(1).takeWhile(function(field) {
-      //  debug('taking' + field);
-      //  return hirakata.isHira(field[0]);
-      //}).value();
-
-      var a1 = _.chain(args).dropWhile(function(field) {
-        return field !== 'T1';
-      }).slice(1).value();
-
-      obj.nanoriReadings = _.chain(a1).takeWhile(function(field) {
-        return hirakata.isHira(field[0]);
-      }).value();
-
+      // obj.nanoriReadings = _.chain(args).dropWhile(_.negate(isNanoriMarker)).slice(1)
+      //   .takeWhile(isKunReading).value();
+      var a1 = _.chain(args).dropWhile(_.negate(isNanoriMarker)).slice(1).value();
+      obj.nanoriReadings = _.chain(a1).takeWhile(isKunReading).value();
 
       // Doesn't work. slice(1) seems not working in this case
       //
-      // obj.radicalNames = _.chain(args).dropWhile(function(field) {
-      //   return field !== 'T2';
-      // }).slice(1).takeWhile(function(field) {
-      //   return hirakata.isHira(field[0]);
-      // }).value();
+      // obj.radicalNames = _.chain(args).dropWhile(_.negate(isRadicalNameMarker)).slice(1)
+      //   .takeWhile(isKunReading).value();
+      var a2 = _.chain(args).dropWhile(_.negate(isRadicalNameMarker)).slice(1).value();
+      obj.radicalNames = _.chain(a2).takeWhile(isKunReading).value();
 
-      var a2 = _.chain(args).dropWhile(function(field) {
-        return field !== 'T2';
-      }).slice(1).value();
-
-      obj.radicalNames = _.chain(a2).takeWhile(function(field) {
-        return hirakata.isHira(field[0]);
-      }).value();
-
-      obj.englishMeanings = _.chain(args).dropWhile(function(field) {
-        return !_.startsWith(field, '{');
-      }).value();
+      obj.englishMeanings = _.chain(args).dropWhile(_.negate(isEnglishMeaning)).value();
 
       return obj;
     }
@@ -278,7 +279,6 @@ var main = function main(argv) {
       debug('# results = ' + results.length);
     })
     .then(function(results) {
-      debug('results[3] = ', results[3]);
     })
     .catch(function(err) {
       throw err;
