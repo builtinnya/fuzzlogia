@@ -10,19 +10,25 @@
     "jshint": "./node_modules/.bin/jshint `npm run -s jsfiles`",
     "jscs": "./node_modules/.bin/jscs `npm run -s jsfiles`",
     "mocha": "./node_modules/.bin/mocha --reporter spec",
-    "test": "npm run jscs && npm run jshint && npm run mocha"
+    "analyze": "npm run jscs && npm run jshint",
+    "test": "npm run analyze && npm run mocha",
+    "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec",
+    "travis": "npm run analyze && npm run coverage && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf ./coverage"
   },
   "author": "Naoto Yokoyama",
   "license": "MIT",
   "devDependencies": {
     "bluebird": "^2.9.13",
+    "coveralls": "^2.11.2",
     "debug": "^2.1.2",
     "iconv": "^2.1.6",
+    "istanbul": "^0.3.7",
     "jscs": "^1.11.3",
     "jshint": "^2.6.3",
     "lodash": "^3.4.0",
     "minimist": "^1.1.0",
     "mocha": "^2.1.0",
+    "mocha-lcov-reporter": "0.0.2",
     "should": "^5.1.0",
     "superagent": "^0.21.0"
   }
