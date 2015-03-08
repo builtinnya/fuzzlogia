@@ -1,6 +1,6 @@
 {
   "name": "fuzzlogia",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A simple Japanese-kanji-reading-aware fuzzy search in JavaScript",
   "repository": "https://github.com/builtinnya/fuzzlogia",
   "main": "index.js",
