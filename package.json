@@ -2,6 +2,7 @@
   "name": "fuzzlogia",
   "version": "0.0.0",
   "description": "A simple Japanese-kanji-reading-aware fuzzy search in JavaScript",
+  "repository": "https://github.com/builtinnya/fuzzlogia"
   "main": "index.js",
   "scripts": {
     "log": "./node_modules/.bin/bunyan",
