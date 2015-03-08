@@ -1,7 +1,7 @@
 /**
  * Downloads and converts KANJIDIC into various formats.
  *
- * Usage: node kanjidic [--outfile=<filename>]
+ * Usage: node kanjidic [--outfile=<filename>] [--converter=<converter>] [--format=<format>]
  */
 
 'use strict';
@@ -275,6 +275,24 @@ var converters = {
         .compact().uniq().value();
       return acc;
     }, {});
+  },
+
+  onkunnanori: function(results) {
+    return results.reduce(function(acc, entry) {
+      if (!entry.kanji) throw new Error('malformed entry');
+      var onReadings = entry.onReadings;
+      var kunReadings = entry.kunReadings;
+      var nanoriReadings = entry.nanoriReadings;
+      if (_.isEmpty(onReadings) && _.isEmpty(kunReadings) && _.isEmpty(nanoriReadings)) {
+        return acc;
+      }
+      acc[entry.kanji] = _.chain(onReadings).concat(kunReadings).concat(nanoriReadings)
+        .map(function(reading) {
+          return hirakata.toHira(reading.replace(/\..+$/, '').replace(/\-/g, ''));
+        })
+        .compact().uniq().value();
+      return acc;
+    }, {});
   }
 };
 
@@ -313,8 +331,8 @@ var main = function main(argv) {
     .tap(function(results) {
       debug('# results = ' + results.length);
     })
-    .then(converters.onkun)
-    .then(formatters.js)
+    .then(converters[argv.converter])
+    .then(formatters[argv.format])
     .then(function(content) {
       return fs.writeFileAsync(argv.outfile, content);
     })
@@ -325,7 +343,9 @@ var main = function main(argv) {
 
 if (require.main === module) {
   main(_.defaults(argv, {
-    outfile: '../src/onkundic.js'
+    outfile: '../src/onkundic.js',
+    converter: 'onkunnanori',
+    format: 'js'
   }));
 }
 

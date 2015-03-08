@@ -37,5 +37,17 @@ describe('fuzzlogia', function() {
     it('should return an empty array if query is empty', function() {
       fl.search('', [ 'あいうえお' ]).should.be.eql([]);
     });
+
+    it('should consider Japanese kanji on/kun readings', function() {
+      fl.search('あい', [ '愛' ]).should.be.eql([ '愛' ]);
+      fl.search('アイ', [ '愛' ]).should.be.eql([ '愛' ]);
+      fl.search('さえない', [ '冴えない' ]).should.be.eql([ '冴えない' ]);
+      fl.search('さいこうさいばんしょ', [ '最高裁判所' ]).should.be.eql([ '最高裁判所' ]);
+    });
+
+    it('should consider Japanese nanori readings', function() {
+      fl.search('ゆうき', [ '結城' ]).should.be.eql([ '結城' ]);
+      fl.search('さき', [ '咲' ]).should.be.eql([ '咲' ]);
+    });
   });
 });
