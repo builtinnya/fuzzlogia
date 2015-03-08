@@ -1,5 +1,7 @@
 # Fuzzlogia
 
+[![Build Status](https://travis-ci.org/builtinnya/fuzzlogia.svg?branch=master)](https://travis-ci.org/builtinnya/fuzzlogia)
+
 Fuzzlogia is a simple **Japanese-kanji-reading-aware fuzzy search** library written in JavaScript.
 
 > Fuzzlogia is still in the early development stage. The API is unstable.
