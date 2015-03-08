@@ -24,7 +24,7 @@ var _containOnKun = function containOnKun(kanji, c) {
  *
  * @param {String} query A query string
  * @param {Array} bucket An array of items
- * @param {String|Function|null} extractor Extractor string/function
+ * @param {String|Function} extractor Extractor string/function
  * @param {Object} options Options
  * @returns {Array} An ordered array of matched items
  */
