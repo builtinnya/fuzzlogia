@@ -1,7 +1,6 @@
 # Fuzzlogia
 
 [![Build Status](https://travis-ci.org/builtinnya/fuzzlogia.svg?branch=master)](https://travis-ci.org/builtinnya/fuzzlogia)
-
 [![Code Climate](https://codeclimate.com/github/builtinnya/fuzzlogia/badges/gpa.svg)](https://codeclimate.com/github/builtinnya/fuzzlogia)
 
 Fuzzlogia is a simple **Japanese-kanji-reading-aware fuzzy search** library written in JavaScript.
