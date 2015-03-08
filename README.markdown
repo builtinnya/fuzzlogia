@@ -1,6 +1,7 @@
 # Fuzzlogia
 
 [![Build Status](https://travis-ci.org/builtinnya/fuzzlogia.svg?branch=master)](https://travis-ci.org/builtinnya/fuzzlogia)
+[![Coverage Status](https://coveralls.io/repos/builtinnya/fuzzlogia/badge.svg?branch=master)](https://coveralls.io/r/builtinnya/fuzzlogia?branch=master)
 [![Code Climate](https://codeclimate.com/github/builtinnya/fuzzlogia/badges/gpa.svg)](https://codeclimate.com/github/builtinnya/fuzzlogia)
 [![Dependency Status](https://david-dm.org/builtinnya/fuzzlogia.svg)](https://david-dm.org/builtinnya/fuzzlogia)
 [![devDependency Status](https://david-dm.org/builtinnya/fuzzlogia/dev-status.svg)](https://david-dm.org/builtinnya/fuzzlogia#info=devDependencies)
