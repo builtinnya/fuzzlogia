@@ -69,7 +69,7 @@ var fieldDefs = {
    */
   U:  { key: 'unicode' },
   B:  { key: 'bushu' },
-  C:  { key: 'classicalBushu'},
+  C:  { key: 'classicalBushu' },
   G:  { key: 'grade' },
   S:  { key: 'strokes', many: true },
   X:  { key: 'crossRef', many: true },

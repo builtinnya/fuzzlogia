@@ -1,0 +1,27 @@
+// See http://jshint.com/docs/options/
+{
+  "node": true,
+  "curly": false,
+  "eqeqeq": true,
+  "latedef": true,
+  "noarg": true,
+  "undef": true,
+  "unused": false,
+  "strict": true,
+  "predef": [
+    "define",
+    "require",
+    "exports",
+    "module",
+    "describe",
+    "before",
+    "beforeEach",
+    "after",
+    "afterEach",
+    "it",
+    "inject",
+    "expect"
+  ],
+  "devel": false,
+  "loopfunc": true
+}

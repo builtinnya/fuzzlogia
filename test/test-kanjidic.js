@@ -63,7 +63,7 @@ describe('kanjidic', function() {
         kanji: '漢',
         jis: '3441',
         unicode: '6f22',
-        args: ['カン', 'T1', 'はん', '{Sino-}', '{China}']
+        args: [ 'カン', 'T1', 'はん', '{Sino-}', '{China}' ]
       });
 
       kanjidic.parseEntry({
@@ -75,7 +75,7 @@ describe('kanjidic', function() {
         kanji: '字',
         jis: '3B7A',
         unicode: '5b57',
-        args: ['ジ', 'あざ', 'あざな', '-な', '{character}', '{letter}', '{word}', '{section of village}']
+        args: [ 'ジ', 'あざ', 'あざな', '-な', '{character}', '{letter}', '{word}', '{section of village}' ]
       });
     });
 
@@ -84,9 +84,9 @@ describe('kanjidic', function() {
         .should.be.eql({
           kanji: '亜',
           jis: '3021',
-          onReadings: ['ア'],
-          kunReadings: ['つ.ぐ'],
-          nanoriReadings: ['や', 'つぎ', 'つぐ'],
+          onReadings: [ 'ア' ],
+          kunReadings: [ 'つ.ぐ' ],
+          nanoriReadings: [ 'や', 'つぎ', 'つぐ' ],
           radicalNames: [],
           englishMeanings: []
         });

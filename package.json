@@ -6,7 +6,11 @@
   "main": "index.js",
   "scripts": {
     "log": "./node_modules/.bin/bunyan",
-    "test": "./node_modules/.bin/mocha --reporter spec"
+    "jsfiles": "find . -name '*.js' ! -path './node_modules/*'",
+    "jshint": "./node_modules/.bin/jshint `npm run -s jsfiles`",
+    "jscs": "./node_modules/.bin/jscs `npm run -s jsfiles`",
+    "mocha": "./node_modules/.bin/mocha --reporter spec",
+    "test": "npm run jscs && npm run jshint && npm run mocha"
   },
   "author": "Naoto Yokoyama",
   "license": "MIT",
@@ -14,6 +18,8 @@
     "bluebird": "^2.9.13",
     "debug": "^2.1.2",
     "iconv": "^2.1.6",
+    "jscs": "^1.11.3",
+    "jshint": "^2.6.3",
     "lodash": "^3.4.0",
     "minimist": "^1.1.0",
     "mocha": "^2.1.0",
