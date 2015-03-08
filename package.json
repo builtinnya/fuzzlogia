@@ -1,9 +1,29 @@
 {
+  "author": "Naoto Yokoyama <builtinnya@gmail.com>",
   "name": "fuzzlogia",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple Japanese-kanji-reading-aware fuzzy search in JavaScript",
-  "repository": "https://github.com/builtinnya/fuzzlogia",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/builtinnya/fuzzlogia"
+  },
+  "homepage": "https://github.com/builtinnya/fuzzlogia",
+  "bugs": {
+    "url": "https://github.com/builtinnya/fuzzlogia/issues",
+    "email": "builtinnya@gmail.com"
+  },
+  "keywords" : [
+    "fuzzy",
+    "search",
+    "kanji",
+    "japanese"
+  ],
+  "license": "MIT",
   "main": "index.js",
+  "directories": {
+    "lib": "./src",
+    "doc": "./README.markdown"
+  },
   "scripts": {
     "log": "./node_modules/.bin/bunyan",
     "jsfiles": "find . -name '*.js' ! -path './node_modules/*'",
@@ -15,8 +35,9 @@
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec",
     "travis": "npm run analyze && npm run coverage && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf ./coverage"
   },
-  "author": "Naoto Yokoyama",
-  "license": "MIT",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
   "devDependencies": {
     "bluebird": "^2.9.13",
     "coveralls": "^2.11.2",
