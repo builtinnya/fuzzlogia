@@ -39,7 +39,7 @@ var romajiToHiraDict = {
   'gya': 'ぎゃ', 'gyu': 'ぎゅ', 'gyo': 'ぎょ',
   'ja':  'じゃ', 'ju':  'じゅ', 'jo':  'じょ',
   'bya': 'びゃ', 'byu': 'びゅ', 'byo': 'びょ',
-  'pya': 'ぴゃ', 'pyu': 'ぴゅ', 'pyo': ''
+  'pya': 'ぴゃ', 'pyu': 'ぴゅ', 'pyo': 'ぴょ'
 };
 
 /**
