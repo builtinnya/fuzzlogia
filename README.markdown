@@ -4,6 +4,8 @@ Fuzzlogia is a simple **Japanese-kanji-reading-aware fuzzy search** library writ
 
 > Fuzzlogia is still in the early development stage. The API is unstable.
 
+Some examples:
+
 ```javascript
 var fl = require('fuzzlogia');
 
@@ -22,7 +24,7 @@ fl.search('ぎんが', [ '電気羊', '銀河ヒッチハイクガイド' ]);
 
 ## Features
 
-- **Pure** (no dependency)
+- **Pure** (no dependencies)
 
 - Fuzzy search with **ranking** (based on # of matched letters, distance, and item length)
 
