@@ -54,6 +54,7 @@ var toUtf8 = function toUtf8(body, from) {
 /**
  * Field definitions.
  *
+ * @see http://www.edrdg.org/kanjidic/kanjidic_doc.html
  * @see http://www.csse.monash.edu.au/~jwb/kanjidic.html
  */
 var fieldDefs = {
@@ -177,8 +178,9 @@ var fieldDefs = {
  * Parses an entry.
  *
  * @param {String} entry An entry
- * @returns {Object|null} A parsed entry or null if failed
+ * @returns {Object} A parsed entry or null if failed
  *
+ * @see http://www.edrdg.org/kanjidic/kanjidic_doc.html
  * @see http://www.csse.monash.edu.au/~jwb/kanjidic.html
  */
 var parseEntry = function parseEntry(fieldDefs, entry) {
