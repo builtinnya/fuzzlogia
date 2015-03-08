@@ -8,6 +8,8 @@ var fl = require('../src/fuzzlogia');
 describe('fuzzlogia', function() {
   describe('#search', function() {
     it('should consider threshold', function() {
+      fl.search('fzzuy', [ 'fuzzy', 'matching' ]).should.be.eql([ 'fuzzy' ]);
+
       fl.search('あいうえお', [ 'さしすせそ', 'はまやらわ' ])
         .should.be.eql([]);
 
@@ -43,6 +45,9 @@ describe('fuzzlogia', function() {
       fl.search('アイ', [ '愛' ]).should.be.eql([ '愛' ]);
       fl.search('さえない', [ '冴えない' ]).should.be.eql([ '冴えない' ]);
       fl.search('さいこうさいばんしょ', [ '最高裁判所' ]).should.be.eql([ '最高裁判所' ]);
+      fl.search('かんじ', [ '漢字は難しい' ]).should.be.eql([ '漢字は難しい' ]);
+      fl.search('ぎんが', [ '電気羊', '銀河ヒッチハイクガイド' ])
+        .should.be.eql([ '銀河ヒッチハイクガイド' ]);
     });
 
     it('should consider Japanese nanori readings', function() {
