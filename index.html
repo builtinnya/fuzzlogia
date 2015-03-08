@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640">
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen">
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Fuzzlogia by builtinnya</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/builtinnya/fuzzlogia">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Fuzzlogia</h1>
+            <h2>A simple Japanese-kanji-reading-aware fuzzy search in JavaScript</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/builtinnya/fuzzlogia/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/builtinnya/fuzzlogia/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1>
+<a id="fuzzlogia" class="anchor" href="#fuzzlogia" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fuzzlogia</h1>
+
+<p><a href="https://travis-ci.org/builtinnya/fuzzlogia"><img src="https://travis-ci.org/builtinnya/fuzzlogia.svg?branch=master" alt="Build Status"></a>
+<a href="https://coveralls.io/r/builtinnya/fuzzlogia?branch=master"><img src="https://coveralls.io/repos/builtinnya/fuzzlogia/badge.svg?branch=master" alt="Coverage Status"></a>
+<a href="https://codeclimate.com/github/builtinnya/fuzzlogia"><img src="https://codeclimate.com/github/builtinnya/fuzzlogia/badges/gpa.svg" alt="Code Climate"></a>
+<a href="https://david-dm.org/builtinnya/fuzzlogia"><img src="https://david-dm.org/builtinnya/fuzzlogia.svg" alt="Dependency Status"></a>
+<a href="https://david-dm.org/builtinnya/fuzzlogia#info=devDependencies"><img src="https://david-dm.org/builtinnya/fuzzlogia/dev-status.svg" alt="devDependency Status"></a></p>
+
+<p>Fuzzlogia is a simple <strong>Japanese-kanji-reading-aware fuzzy search</strong> library written in JavaScript.</p>
+
+<blockquote>
+<p>Fuzzlogia is still in the early development stage. The API is unstable.</p>
+</blockquote>
+
+<p>Some examples:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-s">var</span> fl <span class="pl-k">=</span> <span class="pl-s3">require</span>(<span class="pl-s1"><span class="pl-pds">'</span>fuzzlogia<span class="pl-pds">'</span></span>);
+
+<span class="pl-c">// =&gt; [ 'fuzzy' ]</span>
+fl.<span class="pl-s3">search</span>(<span class="pl-s1"><span class="pl-pds">'</span>fzzuy<span class="pl-pds">'</span></span>, [ <span class="pl-s1"><span class="pl-pds">'</span>fuzzy<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>matching<span class="pl-pds">'</span></span> ]);
+
+<span class="pl-c">// =&gt; [ '最高裁判所' ]</span>
+fl.<span class="pl-s3">search</span>(<span class="pl-s1"><span class="pl-pds">'</span>さいこうさいばんしょ<span class="pl-pds">'</span></span>, [ <span class="pl-s1"><span class="pl-pds">'</span>最高裁判所<span class="pl-pds">'</span></span> ]);
+
+<span class="pl-c">// =&gt; [ '漢字は難しい' ]</span>
+fl.<span class="pl-s3">search</span>(<span class="pl-s1"><span class="pl-pds">'</span>かんじ<span class="pl-pds">'</span></span>, [ <span class="pl-s1"><span class="pl-pds">'</span>漢字は難しい<span class="pl-pds">'</span></span> ]);
+
+<span class="pl-c">// =&gt; [ '銀河ヒッチハイクガイド' ]</span>
+fl.<span class="pl-s3">search</span>(<span class="pl-s1"><span class="pl-pds">'</span>ぎんが<span class="pl-pds">'</span></span>, [ <span class="pl-s1"><span class="pl-pds">'</span>電気羊<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>銀河ヒッチハイクガイド<span class="pl-pds">'</span></span> ]);</pre></div>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li><p><strong>Pure</strong> (no dependencies)</p></li>
+<li><p>Fuzzy search with <strong>ranking</strong> (based on # of matched letters, distance, and item length)</p></li>
+<li><p><strong>Japanese Kanji's on/kun/nanori reading aware</strong> (using <a href="http://www.csse.monash.edu.au/%7Ejwb/kanjidic.html">KANJIDIC</a>)</p></li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Using <a href="https://www.npmjs.com/">npm</a>:</p>
+
+<div class="highlight highlight-shell"><pre>npm install --save fuzzlogia</pre></div>
+
+<h3>
+<a id="in-browser" class="anchor" href="#in-browser" aria-hidden="true"><span class="octicon octicon-link"></span></a>In browser</h3>
+
+<p>You can use <a href="http://browserify.org/">Browserify</a> or <a href="http://webpack.github.io/">Webpack</a> or whatever you want.</p>
+
+<h2>
+<a id="api" class="anchor" href="#api" aria-hidden="true"><span class="octicon octicon-link"></span></a>API</h2>
+
+<h3>
+<a id="searchquery-bucket-extractor-options" class="anchor" href="#searchquery-bucket-extractor-options" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>search(query, bucket, extractor, options)</code>
+</h3>
+
+<hr>
+
+<p><strong>query</strong> (<em>type</em>: <code>String</code>)</p>
+
+<p>A query string.</p>
+
+<hr>
+
+<p><strong>bucket</strong> (<em>type</em>: <code>Array</code>)</p>
+
+<p>An array of items to search for.</p>
+
+<hr>
+
+<p><strong>extractor</strong> (<em>type</em>: <code>String|Function</code>, <em>default</em>: <code>identity</code>)</p>
+
+<p>A function to extract the string to be compared with <code>query</code> from each item.
+If <code>extractor</code> is a string, it will be used as a property name.</p>
+
+<p>Examples:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// =&gt; [ { name: 'John' }]</span>
+fl.<span class="pl-s3">search</span>(<span class="pl-s1"><span class="pl-pds">'</span>John<span class="pl-pds">'</span></span>, [ { name<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>John<span class="pl-pds">'</span></span> } ], <span class="pl-s1"><span class="pl-pds">'</span>name<span class="pl-pds">'</span></span>);
+
+<span class="pl-c">// =&gt; [ { firstName: 'John', lastName: 'Mullins'} ]</span>
+fl.<span class="pl-s3">search</span>(<span class="pl-s1"><span class="pl-pds">'</span>John<span class="pl-pds">'</span></span>, [ { firstName<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>John<span class="pl-pds">'</span></span>, lastName<span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>Mullins<span class="pl-pds">'</span></span>} ], <span class="pl-st">function</span>(<span class="pl-vpf">item</span>) {
+  <span class="pl-k">return</span> item.firstName <span class="pl-k">+</span> <span class="pl-s1"><span class="pl-pds">'</span> <span class="pl-pds">'</span></span> <span class="pl-k">+</span> item.lastName;
+});</pre></div>
+
+<hr>
+
+<p><strong>options</strong> (<em>type</em>: <code>Object</code>, <em>default</em>: see below)</p>
+
+<p>Options to control the behavior. The following options are supported:</p>
+
+<ul>
+<li>
+<p><strong>threshold</strong> (<em>type</em>: <code>Number</code>, <em>default</em>: 0)</p>
+
+<p>If the number of characters in <code>query</code> <strong>not</strong> contained in an item string exceeds <code>threshold</code>,
+the item will not appear in the result.</p>
+
+<p>Examples:</p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// =&gt; []</span>
+fl.<span class="pl-s3">search</span>(<span class="pl-s1"><span class="pl-pds">'</span>gist<span class="pl-pds">'</span></span>, [ <span class="pl-s1"><span class="pl-pds">'</span>git<span class="pl-pds">'</span></span> ], <span class="pl-c1">null</span>, { threshold<span class="pl-k">:</span> <span class="pl-c1">0</span> })
+
+<span class="pl-c">// =&gt; [ 'git' ]</span>
+fl.<span class="pl-s3">search</span>(<span class="pl-s1"><span class="pl-pds">'</span>gist<span class="pl-pds">'</span></span>, [ <span class="pl-s1"><span class="pl-pds">'</span>git<span class="pl-pds">'</span></span> ], <span class="pl-c1">null</span>, { threshold<span class="pl-k">:</span> <span class="pl-c1">1</span> })</pre></div>
+</li>
+</ul>
+
+<h2>
+<a id="dictionaries" class="anchor" href="#dictionaries" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dictionaries</h2>
+
+<p>Fuzzlogia uses the following dictionaries:</p>
+
+<ul>
+<li>
+<p><strong><a href="http://www.csse.monash.edu.au/%7Ejwb/kanjidic.html">KANJIDIC</a></strong></p>
+
+<p><a href="http://www.csse.monash.edu.au/%7Ejwb/kanjidic.html">KANJIDIC</a> file contains comprehensive information about 6,355 Japanese kanji specified in the JIS X 0208-1990, including Japanese on/kun/nanori readings (<a href="http://www.edrdg.org/kanjidic/kanjidic_doc.html">documentation</a>).
+The file is the property of the <a href="http://www.edrdg.org/">Electronic Dictionary Research and Development Group</a>, and are used in conformance with the Group's <a href="http://www.edrdg.org/edrdg/licence.html">licence</a>.</p>
+</li>
+</ul>
+
+<h2>
+<a id="tools" class="anchor" href="#tools" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tools</h2>
+
+<p>Fuzzlogia contains the following tools:</p>
+
+<ul>
+<li>
+<p><strong><a href="tools/kanjidic.js">kanjidic.js</a></strong></p>
+
+<p>Extracts and compiles KANJIDIC into easy-to-use format for Fuzzlogia. See the file for usage.
+<a href="src/onkundic.js">onkundic.js</a> is automatically generated by this tool.</p>
+</li>
+</ul>
+
+<h2>
+<a id="todos" class="anchor" href="#todos" aria-hidden="true"><span class="octicon octicon-link"></span></a>TODOs</h2>
+
+<ul>
+<li><p>Demo page</p></li>
+<li><p>Performance analysis and tuning</p></li>
+<li><p>Hiragana/katakana/romaji agnostic fuzzy search</p></li>
+</ul>
+
+<h2>
+<a id="contributing-to-fuzzlogia" class="anchor" href="#contributing-to-fuzzlogia" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing to Fuzzlogia</h2>
+
+<p>Pull requests are welcomed.
+Please add the relevant tests and ensure that it passes all the tests by executing
+<code>npm test</code> before submitting a pull request.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Copyright © 2015 Naoto Yokoyama</p>
+
+<p>Distributed under the MIT license. See the <a href="./LICENSE">LICENSE</a> file for full details.</p>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/builtinnya">builtinnya</a> can be found on <a href="https://github.com/builtinnya/fuzzlogia">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-60515707-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
