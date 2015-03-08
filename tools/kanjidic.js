@@ -1,7 +1,8 @@
+#!/usr/bin/env node
 /**
  * Downloads and converts KANJIDIC into various formats.
  *
- * Usage: node kanjidic [--outfile=<filename>] [--converter=<converter>] [--format=<format>]
+ * Usage: kanjidic <filename> [--converter=<converter>] [--format=<format>]
  */
 
 'use strict';
@@ -342,8 +343,11 @@ var main = function main(argv) {
 };
 
 if (require.main === module) {
+  if (argv._.length < 1)
+    throw new Error('usage: kanjidic <filename> [--converter=<converter>] [--format=<format>]');
+
   main(_.defaults(argv, {
-    outfile: '../src/onkundic.js',
+    outfile: argv._[0],
     converter: 'onkunnanori',
     format: 'js'
   }));
