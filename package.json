@@ -12,7 +12,7 @@
     "url": "https://github.com/builtinnya/fuzzlogia/issues",
     "email": "builtinnya@gmail.com"
   },
-  "keywords" : [
+  "keywords": [
     "fuzzy",
     "search",
     "kanji",
@@ -32,6 +32,7 @@
     "mocha": "./node_modules/.bin/mocha --reporter spec",
     "analyze": "npm run jscs && npm run jshint",
     "test": "npm run analyze && npm run mocha",
+    "coverage-report": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- -R spec",
     "travis": "npm run analyze && npm run coverage && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf ./coverage"
   },
