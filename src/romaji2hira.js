@@ -8,7 +8,6 @@
 
 'use strict';
 
-
 var romajiToHiraDict = {
   'a':  'あ', 'i':   'い', 'u':   'う', 'e':  'え', 'o':  'お',
   'ka': 'か', 'ki':  'き', 'ku':  'く', 'ke': 'け', 'ko': 'こ',
@@ -81,7 +80,6 @@ var convert = function convert(romajiStr) {
 
   return result;
 };
-
 
 module.exports = {
   convert: convert

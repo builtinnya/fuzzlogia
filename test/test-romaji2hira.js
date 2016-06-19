@@ -4,7 +4,6 @@ var should = require('should');
 
 var r2h = require('../src/romaji2hira');
 
-
 describe('romaji2hira', function() {
   describe('#convert', function() {
     it('should return あいうえお (vowels only)', function() {

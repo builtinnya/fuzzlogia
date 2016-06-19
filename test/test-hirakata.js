@@ -4,7 +4,6 @@ var should = require('should');
 
 var hirakata = require('../src/hirakata');
 
-
 describe('hirakata', function() {
   describe('#toKata', function() {
     it('should return correct katakana for each hiragana', function() {

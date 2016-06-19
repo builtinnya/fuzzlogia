@@ -4,7 +4,6 @@
 
 'use strict';
 
-
 module.exports = {
   /**
    * KANJIDIC: comprehensive information about Japanese kanji.

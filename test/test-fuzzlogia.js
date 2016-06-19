@@ -4,7 +4,6 @@ var should = require('should');
 
 var fl = require('../src/fuzzlogia');
 
-
 describe('fuzzlogia', function() {
   describe('#search', function() {
     it('should consider threshold', function() {

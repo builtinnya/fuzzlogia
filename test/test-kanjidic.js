@@ -4,7 +4,6 @@ var should = require('should');
 
 var kanjidic = require('../tools/kanjidic');
 
-
 describe('kanjidic', function() {
   describe('#parseEntry', function() {
     it('should capture positional fields', function() {

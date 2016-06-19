@@ -18,7 +18,6 @@ var debug = require('debug')('kanjidic');
 var repos = require('./repositories');
 var hirakata = require('../src/hirakata');
 
-
 /**
  * Fetches a gzipped dictionary from a given URI.
  *
@@ -352,7 +351,6 @@ if (require.main === module) {
     format: 'js'
   }));
 }
-
 
 module.exports = {
   parseEntry: parseEntry,

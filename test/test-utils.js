@@ -4,7 +4,6 @@ var should = require('should');
 
 var utils = require('../src/utils');
 
-
 describe('utils', function() {
   describe('#merge', function() {
     it('should override destination properties', function() {

@@ -4,7 +4,6 @@ var onkundic = require('./onkundic');
 var hirakata = require('./hirakata');
 var utils = require('./utils');
 
-
 /**
  * Returns true iff a kanji has a specified on/kun reading.
  *
@@ -77,7 +76,6 @@ var search = function search(query, bucket, extractor, options) {
     }, []));
   }, []);
 };
-
 
 module.exports = {
   search: search
