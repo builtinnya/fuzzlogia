@@ -40,18 +40,18 @@
     "node": ">= 0.10.0"
   },
   "devDependencies": {
-    "bluebird": "^2.9.13",
+    "bluebird": "^3.4.1",
     "coveralls": "^2.11.2",
     "debug": "^2.1.2",
     "iconv": "^2.1.6",
-    "istanbul": "^0.3.7",
-    "jscs": "^1.11.3",
+    "istanbul": "^0.4.3",
+    "jscs": "^3.0.4",
     "jshint": "^2.6.3",
-    "lodash": "^3.4.0",
+    "lodash": "^4.13.1",
     "minimist": "^1.1.0",
     "mocha": "^2.1.0",
-    "mocha-lcov-reporter": "0.0.2",
-    "should": "^5.1.0",
-    "superagent": "^0.21.0"
+    "mocha-lcov-reporter": "1.2.0",
+    "should": "^9.0.2",
+    "superagent": "^2.0.0"
   }
 }

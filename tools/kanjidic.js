@@ -152,21 +152,8 @@ var fieldDefs = {
 
       obj.onReadings = _.chain(args).takeWhile(isOnReading).value();
       obj.kunReadings = _.chain(args).dropWhile(isOnReading).takeWhile(isKunReading).value();
-
-      // Doesn't work. slice(1) seems not working in this case
-      //
-      // obj.nanoriReadings = _.chain(args).dropWhile(_.negate(isNanoriMarker)).slice(1)
-      //   .takeWhile(isKunReading).value();
-      var a1 = _.chain(args).dropWhile(_.negate(isNanoriMarker)).slice(1).value();
-      obj.nanoriReadings = _.chain(a1).takeWhile(isKunReading).value();
-
-      // Doesn't work. slice(1) seems not working in this case
-      //
-      // obj.radicalNames = _.chain(args).dropWhile(_.negate(isRadicalNameMarker)).slice(1)
-      //   .takeWhile(isKunReading).value();
-      var a2 = _.chain(args).dropWhile(_.negate(isRadicalNameMarker)).slice(1).value();
-      obj.radicalNames = _.chain(a2).takeWhile(isKunReading).value();
-
+      obj.nanoriReadings = _.chain(args).dropWhile(_.negate(isNanoriMarker)).slice(1).takeWhile(isKunReading).value();
+      obj.radicalNames = _.chain(args).dropWhile(_.negate(isRadicalNameMarker)).slice(1).takeWhile(isKunReading).value();
       obj.englishMeanings = _.chain(args).dropWhile(_.negate(isEnglishMeaning)).value();
 
       return obj;
@@ -234,7 +221,7 @@ var parseEntry = function parseEntry(fieldDefs, entry) {
     var val = def.fn.apply(this, def.args);
     obj[def.key] = def.many ? [ val ] : val;
 
-    return _.merge(acc, obj, function(a, b) {
+    return _.mergeWith(acc, obj, function(a, b) {
       return _.isArray(a) ? a.concat(b) : undefined;
     });
   }, {});
